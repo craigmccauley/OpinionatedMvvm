@@ -1,11 +1,8 @@
-﻿using MvvmApp.Core.Features.MainPage;
-using MvvmApp.Wpf.Infrastructure.Application;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MvvmApp.Wpf;
-public partial class MainWindow : Window, IMainWindow
+public partial class MainWindow : Window
 {
-    public MainPageViewModel MainPageViewModel { get; set; }
     public MainWindow()
     {
         InitializeComponent();

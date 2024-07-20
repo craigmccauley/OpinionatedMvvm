@@ -18,7 +18,7 @@ namespace MvvmApp.Wpf.Infrastructure.Application
         {
             var services = new ServiceCollection();
 
-            services.AddSingleton<IMainWindow, MainWindow>();
+            //services.AddSingleton<IMainWindow, MainWindow>();
 
             services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
             services.AddSingleton<IDispatcher, Dispatcher>();

@@ -14,7 +14,7 @@ internal class ApplicationService
     internal void Initialize()
     {
         var app = new App();
-        app.InitializeComponent();
+        //app.InitializeComponent();
         app.Startup += OnApplicationActivated;
 
         var pageViewModelCreatorService = serviceProvider.GetService<IPageViewModelCreatorService>();
@@ -28,7 +28,7 @@ internal class ApplicationService
 
         app.MainWindow = new MainWindow
         {
-            MainPageViewModel = pageViewModelGetterService.GetPageViewModel(AppPages.MainPage) as MainPageViewModel,
+            DataContext = pageViewModelGetterService.GetPageViewModel(AppPages.MainPage) as MainPageViewModel,
         };
         isInitialized = true;
 
@@ -44,13 +44,16 @@ internal class ApplicationService
         }
 
         var dispatcher = serviceProvider.GetService<IDispatcher>();
-        var mainWindow = serviceProvider.GetService<IMainWindow>();
+        //var mainWindow = serviceProvider.GetService<IMainWindow>();
         var pageViewModelGetterService = serviceProvider.GetService<IPageViewModelGetterService>();
         var mainPageViewModel = pageViewModelGetterService.GetPageViewModel(AppPages.MainPage) as MainPageViewModel;
         var navPageViewModel = pageViewModelGetterService.GetPageViewModel(AppPages.NavPage) as NavPageViewModel;
 
+        var app = sender as App;
+        app.MainWindow.Activate();
+
         //mainPageViewModel.SelectedView = navPageViewModel;
-        mainWindow.Activate();
+        //mainWindow.Activate();
         //await dispatcher.RunAsync(() =>
         //{
         //    mainPageViewModel.SelectedView = navPageViewModel;

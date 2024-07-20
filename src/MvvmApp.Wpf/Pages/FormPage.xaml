@@ -1,16 +1,16 @@
-﻿<Page
+﻿<UserControl
     x:Class="MvvmApp.Wpf.Pages.FormPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MvvmApp.Wpf.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="FormPage"
+    xmlns:vm="clr-namespace:MvvmApp.Core.Features.FormPage;assembly=MvvmApp.Core"
+    d:DataContext="{d:DesignInstance Type=vm:FormPageViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
     <Grid>
         <TextBlock Text="{Binding Title}" />
     </Grid>
-</Page>
+</UserControl>

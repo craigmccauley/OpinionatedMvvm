@@ -13,16 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MvvmApp.Wpf.Pages
+namespace MvvmApp.Wpf.Pages;
+/// <summary>
+/// Interaction logic for NavPage.xaml
+/// </summary>
+public partial class NavPage : UserControl
 {
-    /// <summary>
-    /// Interaction logic for NavPage.xaml
-    /// </summary>
-    public partial class NavPage : Page
+    public NavPage()
     {
-        public NavPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

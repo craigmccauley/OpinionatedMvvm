@@ -2,7 +2,7 @@
 
 namespace MvvmApp.Wpf.Pages;
 
-public partial class NoNavPage : Page
+public partial class NoNavPage : UserControl
 {
     public NoNavPage()
     {

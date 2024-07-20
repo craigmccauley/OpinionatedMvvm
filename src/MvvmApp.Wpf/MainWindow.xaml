@@ -6,18 +6,18 @@
     xmlns:local="clr-namespace:MvvmApp.Wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:MvvmApp.Wpf.Pages"
+    xmlns:vm="clr-namespace:MvvmApp.Core.Features.MainPage;assembly=MvvmApp.Core"
     x:Name="MainWindowObject"
-    Title="MainWindow"
+    Title="Main Window"
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MainPageViewModel}">
+            <pages:MainPage />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <Frame DataContext="{Binding MainPageViewModel, ElementName=MainWindowObject}" Source="/Pages/MainPage.xaml">
-            <!--<Frame.Content>
-            -->
-            <!--<pages:MainPage DataContext="{Binding MainPageViewModel}" />-->
-            <!--
-            </Frame.Content>-->
-        </Frame>
+        <ContentControl Content="{Binding}" />
     </Grid>
 </Window>
