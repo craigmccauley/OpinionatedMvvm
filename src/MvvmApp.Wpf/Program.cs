@@ -3,6 +3,8 @@ using MvvmApp.Core.Features.MainPage;
 using MvvmApp.Core.Features.NavPage;
 using MvvmApp.Core.Infrastructure.Application;
 using MvvmApp.Wpf.Infrastructure.Application;
+using System.Resources;
+using System.Windows;
 
 namespace MvvmApp.Wpf;
 public class Program
@@ -21,8 +23,17 @@ public class Program
             var mainPageViewModel = pageViewModelGetterService.GetPageViewModel(AppPages.MainPage) as MainPageViewModel;
             var navPageViewModel = pageViewModelGetterService.GetPageViewModel(AppPages.NavPage) as NavPageViewModel;
             //var welcomePageViewModel = pageViewModelGetterService.GetPageViewModel(AppPages.WelcomePage) as WelcomePageViewModel;
-            
+
             mainPageViewModel!.SelectedView = navPageViewModel!;
+
+            foreach (var uri in new[]
+            {
+                "pack://application:,,,/Wpf.Ui;component/Resources/Theme/Light.xaml",
+                "pack://application:,,,/Wpf.Ui;component/Resources/Wpf.Ui.xaml"
+            })
+            {
+                app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri(uri) });
+            }
 
             app.MainWindow = new MainWindow
             {

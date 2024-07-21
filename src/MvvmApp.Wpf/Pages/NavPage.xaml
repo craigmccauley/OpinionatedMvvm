@@ -19,8 +19,52 @@
     <UserControl.Resources>
         <converters:MenuItemConverter x:Key="MenuItemConverter" />
     </UserControl.Resources>
-    <StackPanel>
-        <TextBlock Text="NavPage" />
-        <ui:NavigationView MenuItemsSource="{Binding MenuItems, Converter={StaticResource MenuItemConverter}}" />
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0">
+            This is the NavPage1
+        </TextBlock>
+        <ui:NavigationView
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            MenuItemsSource="{Binding MenuItems, Converter={StaticResource MenuItemConverter}}"
+            Visibility="Visible">
+            <ui:NavigationView.FooterMenuItems>
+                <ui:NavigationViewItem Content="Settings" TargetPageType="{x:Type pages:SettingsPage}">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="Settings24" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.FooterMenuItems>
+        </ui:NavigationView><!--
+
+        <ui:SymbolIcon Symbol="Home48" />
+        <ui:NavigationView
+            Grid.Row="1"
+            Width="500"
+            Height="500"
+            IsBackButtonVisible="Auto"
+            IsPaneToggleVisible="True"
+            PaneDisplayMode="Left"
+            PaneTitle="PHẦN MỀM QUẢN LÝ HỢP ĐỒNG"
+            Visibility="Visible">
+
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Content="Welcome" />
+                <ui:NavigationViewItem Content="Form" />
+                <ui:NavigationViewItem Content="Settings" />
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>-->
+        <TextBlock Grid.Row="2">
+            End of the NavPage
+        </TextBlock>
+    </Grid>
+
 </UserControl>

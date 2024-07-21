@@ -27,17 +27,13 @@
                 </nav:PageTemplateSelector.DataTemplateCollection>
             </nav:PageTemplateSelector>
         </Grid.Resources>
-        <StackPanel>
-            <TextBlock Text="MainPage" />
-            <ContentControl
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                HorizontalContentAlignment="Stretch"
-                VerticalContentAlignment="Stretch"
-                Background="Blue"
-                Content="{Binding SelectedView}"
-                ContentTemplateSelector="{StaticResource PageTemplateSelector}" />
-            <TextBlock Text="MainPage" />
-        </StackPanel>
+        <ContentControl
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            Background="Blue"
+            Content="{Binding SelectedView}"
+            ContentTemplateSelector="{StaticResource PageTemplateSelector}" />
     </Grid>
 </UserControl>
