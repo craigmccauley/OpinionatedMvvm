@@ -19,9 +19,10 @@ namespace MvvmApp.Wpf.Infrastructure.Converters
             {
                 Content = i.Content,
                 Icon = new SymbolIcon(SymbolGlyph.Parse(i.Glyph)),
-                TargetPageType = MapToPage(i.NavDestination)
+                TargetPageType = MapToPage(i.NavDestination),
+                IsActive = i.IsSelected,
+                DataContext = i.Parent.SelectedView
             });
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
