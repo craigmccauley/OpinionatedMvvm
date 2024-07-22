@@ -3,10 +3,23 @@ using MvvmApp.Core.Infrastructure.Application;
 using MvvmApp.Features.NavPage;
 
 namespace MvvmApp.Wpf.Features.NavPage;
-public class NavigationViewSelectionChangedEventArgsToNavigationArgsMap : INavigationViewSelectionChangedEventArgsToNavigationArgsMap
+public class NavigationViewSelectionChangedEventArgsToNavigationArgsMap() : INavigationViewSelectionChangedEventArgsToNavigationArgsMap
 {
     public NavigationArgs Map(object src)
     {
+        if(src is not NavPageViewModel vm)
+        {
+            return null;
+        }
+
+        return new NavigationArgs
+        {
+            SelectedPage = vm.SelectedMenuItem.NavDestination,
+            NavPageViewModel = vm
+        };
+
+
+
         //if (src is not NavigationViewSelectionChangedEventArgs args)
         //{
         //    return null;

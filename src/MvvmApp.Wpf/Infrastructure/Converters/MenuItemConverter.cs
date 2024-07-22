@@ -1,5 +1,6 @@
 ﻿using MvvmApp.Core.Infrastructure.Application;
 using MvvmApp.Wpf.Pages;
+using MvvmAppWpf.Pages;
 using System.Globalization;
 using System.Windows.Data;
 using Wpf.Ui.Controls;
@@ -20,7 +21,6 @@ namespace MvvmApp.Wpf.Infrastructure.Converters
                 Content = i.Content,
                 Icon = new SymbolIcon(SymbolGlyph.Parse(i.Glyph)),
                 TargetPageType = MapToPage(i.NavDestination),
-                IsActive = i.IsSelected,
                 DataContext = i.Parent.SelectedView
             });
         }
@@ -30,7 +30,7 @@ namespace MvvmApp.Wpf.Infrastructure.Converters
             throw new NotImplementedException();
         }
 
-        private static Type MapToPage(AppPage viewModelPage)
+        public static Type MapToPage(AppPage viewModelPage)
         {
             if (viewModelPage == AppPages.MainPage)
             {

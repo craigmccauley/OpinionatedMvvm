@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:MvvmApp.Wpf.Infrastructure.Navigation"
     xmlns:navpage="clr-namespace:MvvmApp.Core.Features.NavPage;assembly=MvvmApp.Core"
+    xmlns:navpages="clr-namespace:MvvmAppWpf.Pages"
     xmlns:nonavpage="clr-namespace:MvvmApp.Core.Features.NoNavPage;assembly=MvvmApp.Core"
     xmlns:pages="clr-namespace:MvvmApp.Wpf.Pages"
     xmlns:vm="clr-namespace:MvvmApp.Core.Features.MainPage;assembly=MvvmApp.Core"
@@ -19,7 +20,7 @@
             <nav:PageTemplateSelector x:Key="PageTemplateSelector">
                 <nav:PageTemplateSelector.DataTemplateCollection>
                     <DataTemplate DataType="{x:Type navpage:NavPageViewModel}">
-                        <pages:NavPage />
+                        <navpages:NavPage />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type nonavpage:NoNavPageViewModel}">
                         <pages:NoNavPage />

@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MvvmApp.Core.Features.NavPage;
+using MvvmApp.Wpf.Infrastructure.Converters;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 
-namespace MvvmApp.Wpf.Pages;
-/// <summary>
-/// Interaction logic for NavPage.xaml
-/// </summary>
+//Sigh, MvvmApp.Wpf and Wpf.Ui namespaces get confused in the generated file.
+namespace MvvmAppWpf.Pages;
 public partial class NavPage : UserControl
 {
     public NavPage()
     {
         InitializeComponent();
+    }
+
+    private void NavigationView_Loaded(object sender, RoutedEventArgs e)
+    {
+        //var navigationView = (NavigationView)sender;
+        //var vm = (NavPageViewModel)DataContext;
+
+        //navigationView.Navigate(MenuItemConverter.MapToPage(vm.SelectedMenuItem.NavDestination), vm.SelectedView);
     }
 }
