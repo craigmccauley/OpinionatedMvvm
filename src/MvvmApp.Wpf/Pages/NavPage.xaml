@@ -10,34 +10,52 @@
     xmlns:nav="clr-namespace:MvvmApp.Wpf.Infrastructure.Navigation"
     xmlns:pages="clr-namespace:MvvmApp.Wpf.Pages"
     xmlns:sp="clr-namespace:MvvmApp.Core.Features.SettingsPage;assembly=MvvmApp.Core"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:vm="clr-namespace:MvvmApp.Core.Features.NavPage;assembly=MvvmApp.Core"
     xmlns:wp="clr-namespace:MvvmApp.Core.Features.WelcomePage;assembly=MvvmApp.Core"
-    xmlns:wpfui="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
     d:DataContext="{d:DesignInstance Type=vm:NavPageViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <converters:MenuItemConverter x:Key="MenuItemConverter" />
+        <converters:SymbolToIconConverter x:Key="SymbolToIconConverter" />
+        <nav:PageTemplateSelector x:Key="PageTemplateSelector">
+            <nav:PageTemplateSelector.DataTemplateCollection>
+                <DataTemplate DataType="{x:Type wp:WelcomePageViewModel}">
+                    <pages:WelcomePage />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type fp:FormPageViewModel}">
+                    <pages:FormPage />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type sp:SettingsPageViewModel}">
+                    <pages:SettingsPage />
+                </DataTemplate>
+            </nav:PageTemplateSelector.DataTemplateCollection>
+        </nav:PageTemplateSelector>
     </UserControl.Resources>
 
-    <ui:NavigationView
-        Name="myNavigationView"
-        Loaded="NavigationView_Loaded"
-        MenuItemsSource="{Binding MenuItems, Converter={StaticResource MenuItemConverter}}">
+    <ui:NavigationView MenuItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}">
         <Behaviors:Interaction.Triggers>
             <Behaviors:EventTrigger EventName="SelectionChanged">
-                <Behaviors:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding ., ElementName=myNavigationView}" />
+                <Behaviors:InvokeCommandAction Command="{Binding SelectionChangedCommand}" PassEventArgsToCommand="True" />
+            </Behaviors:EventTrigger>
+            <Behaviors:EventTrigger EventName="Loaded">
+                <Behaviors:InvokeCommandAction Command="{Binding SelectionChangedCommand}" />
             </Behaviors:EventTrigger>
         </Behaviors:Interaction.Triggers>
-        <ui:NavigationView.FooterMenuItems>
-            <ui:NavigationViewItem Content="Settings" TargetPageType="{x:Type pages:SettingsPage}">
-                <ui:NavigationViewItem.Icon>
-                    <ui:SymbolIcon Symbol="Settings24" />
-                </ui:NavigationViewItem.Icon>
-            </ui:NavigationViewItem>
-        </ui:NavigationView.FooterMenuItems>
+        <ui:NavigationView.MenuItemTemplate>
+            <DataTemplate>
+                <ui:NavigationViewItem Content="{Binding Content}" Icon="{Binding Glyph, Converter={StaticResource SymbolToIconConverter}}" />
+            </DataTemplate>
+        </ui:NavigationView.MenuItemTemplate>
+        <ContentControl
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            Background="Blue"
+            Content="{Binding SelectedView}"
+            ContentTemplateSelector="{StaticResource PageTemplateSelector}" />
     </ui:NavigationView>
 
 </UserControl>
