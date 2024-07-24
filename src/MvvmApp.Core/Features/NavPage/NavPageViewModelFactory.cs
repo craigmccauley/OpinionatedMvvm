@@ -25,6 +25,7 @@ public class NavPageViewModelFactory(
             Glyph = "Home",
             NavDestination = AppPages.WelcomePage,
             Parent = vm,
+            IsSelected = true,
         };
 
         vm.MenuItems.Add(firstMenuItem);
