@@ -14,7 +14,7 @@
         </TransitionCollection>
     </Page.Transitions>
     <StackPanel>
-        <TextBlock Text="This page has no navigation panel and is being redered from MainPage." />
+        <TextBlock Text="This page has no navigation panel and is being rendered from MainPage." />
         <Button Command="{Binding NavigateToNavPageCommand}" Content="Go back to nav page" />
     </StackPanel>
 </Page>
