@@ -10,7 +10,7 @@
     d:DataContext="{d:DesignInstance Type=vm:NoNavPageViewModel}"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBlock Text="This page has no navigation panel and is being rendered from MainPage." />
-        <Button Command="{Binding NavigateToNavPageCommand}" Content="Go back to nav page" />
+        <TextBlock Text="{Binding Loc.NoNavPage_BodyText}" />
+        <Button Command="{Binding NavigateToNavPageCommand}" Content="{Binding Loc.NoNavPage_BackButton}" />
     </StackPanel>
 </UserControl>

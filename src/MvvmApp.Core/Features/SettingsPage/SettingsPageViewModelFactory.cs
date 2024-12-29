@@ -1,8 +1,16 @@
 using MvvmApp.Core.Infrastructure.Common;
+using MvvmApp.Core.Infrastructure.Localization;
 
 namespace MvvmApp.Core.Features.SettingsPage;
 
-public class SettingsPageViewModelFactory : PageViewModelFactoryBase<SettingsPageViewModel>
+public class SettingsPageViewModelFactory(
+    ILocalizeServiceFactory localizeServiceFactory) : PageViewModelFactoryBase<SettingsPageViewModel>
 {
-    public override SettingsPageViewModel Invoke() => new();
+    private readonly ILocalizeService<SettingsPageLoc> localizeService = localizeServiceFactory.Invoke<SettingsPageLoc>();
+    public override SettingsPageViewModel Invoke()
+    {
+        var vm = new SettingsPageViewModel();
+        localizeService.SetupLocalization(vm);
+        return vm;
+    }
 }

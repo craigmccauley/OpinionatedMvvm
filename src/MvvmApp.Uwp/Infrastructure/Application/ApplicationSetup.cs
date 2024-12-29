@@ -7,6 +7,7 @@ using MvvmApp.Core.Features.NoNavPage;
 using MvvmApp.Core.Features.SettingsPage;
 using MvvmApp.Core.Features.WelcomePage;
 using MvvmApp.Core.Infrastructure.Application;
+using MvvmApp.Core.Infrastructure.Localization;
 using MvvmApp.Features.NavPage;
 using System;
 using Windows.UI.Core;
@@ -36,6 +37,8 @@ public static class ApplicationSetup
         services.AddFeaturesNoNavPage();
         services.AddFeaturesSettingsPage();
         services.AddFeaturesWelcomePage();
+
+        services.AddInfrastructureLocalization();
 
         return services.BuildServiceProvider();
     }

@@ -7,6 +7,7 @@ using MvvmApp.Core.Features.NoNavPage;
 using MvvmApp.Core.Features.SettingsPage;
 using MvvmApp.Core.Features.WelcomePage;
 using MvvmApp.Core.Infrastructure.Application;
+using MvvmApp.Core.Infrastructure.Localization;
 using MvvmApp.WinUI.Features.NavPage;
 using System;
 
@@ -33,6 +34,8 @@ namespace MvvmApp.WinUI.Infrastructure.Application
             services.AddFeaturesNoNavPage();
             services.AddFeaturesSettingsPage();
             services.AddFeaturesWelcomePage();
+
+            services.AddInfrastructureLocalization();
 
             return services.BuildServiceProvider();
         }

@@ -11,6 +11,6 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <TextBlock Text="{Binding Title}" />
+        <TextBlock Text="{Binding Loc.FormPage_Description}" />
     </Grid>
 </UserControl>

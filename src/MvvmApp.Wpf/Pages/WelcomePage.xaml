@@ -11,8 +11,8 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBlock Text="This welcome page is rendered from the NavPage NavigationView which in turn is rendered in the MainPage." />
-        <Button Command="{Binding NavigateToNoNavPageCommand}" Content="Go to NoNav page" />
-        <Button Command="{Binding NavigateToFormPageCommand}" Content="Go to Form page" />
+        <TextBlock Text="{Binding Loc.WelcomePage_Description}" />
+        <Button Command="{Binding NavigateToNoNavPageCommand}" Content="{Binding Loc.WelcomePage_NavigateNoNavButton}" />
+        <Button Command="{Binding NavigateToFormPageCommand}" Content="{Binding Loc.WelcomePage_NavigateFormPageButton}" />
     </StackPanel>
 </UserControl>

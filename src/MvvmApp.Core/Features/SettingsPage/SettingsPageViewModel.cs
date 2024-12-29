@@ -2,6 +2,7 @@
 using MvvmApp.Core.Infrastructure.Common;
 
 namespace MvvmApp.Core.Features.SettingsPage;
-public partial class SettingsPageViewModel : ObservableObject, IPageViewModel
+public partial class SettingsPageViewModel : ObservableObject, IPageViewModel<SettingsPageLoc>
 {
+    public SettingsPageLoc Loc { get; set; }
 }

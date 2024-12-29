@@ -6,4 +6,4 @@ public class ChangeNavPageMessage(AppPage destination) : RequestMessage<ChangeNa
 {
     public AppPage Destination => destination;
 }
-public class ChangeNavPageMessageResult() { }
+public class ChangeNavPageMessageResult { }

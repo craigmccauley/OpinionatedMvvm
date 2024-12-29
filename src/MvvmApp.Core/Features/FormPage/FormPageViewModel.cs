@@ -2,8 +2,7 @@
 using MvvmApp.Core.Infrastructure.Common;
 
 namespace MvvmApp.Core.Features.FormPage;
-public partial class FormPageViewModel : ObservableObject, IPageViewModel
+public partial class FormPageViewModel : ObservableObject, IPageViewModel<FormPageLoc>
 {
-    [ObservableProperty]
-    private string title = "Form Page";
+    public FormPageLoc Loc { get; set; }
 }

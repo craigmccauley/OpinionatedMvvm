@@ -1,15 +1,24 @@
 using MvvmApp.Core.Infrastructure.Common;
+using MvvmApp.Core.Infrastructure.Localization;
 
 namespace MvvmApp.Core.Features.NoNavPage;
 
 public class NoNavPageViewModelFactory(
-    INavigateToNavPageCommand navigateToNavPageCommand) : PageViewModelFactoryBase<NoNavPageViewModel>
+    ILocalizeServiceFactory localizeServiceFactory,
+    INavigateToNavPageCommand navigateToNavPageCommand) 
+    : PageViewModelFactoryBase<NoNavPageViewModel>
 {
+    private readonly ILocalizeService<NoNavPageLoc> localizeService = localizeServiceFactory.Invoke<NoNavPageLoc>();
+
     public override NoNavPageViewModel Invoke()
     {
-        return new NoNavPageViewModel
+        var vm = new NoNavPageViewModel
         {
             NavigateToNavPageCommand = navigateToNavPageCommand
         };
+
+        localizeService.SetupLocalization(vm);
+
+        return vm;
     }
 }
